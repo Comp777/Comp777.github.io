@@ -1,27 +1,9 @@
-File.write("./bg/index.html",'<DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>CompTest</title>
-	<link rel="stylesheet" type="text/css" href="../styles/style.css">
-</head>
-<body>
-	<h1>%{headline}</h1>
-	<p>%{question}</p>
-	<h2>%{body}<h2>
-	<a href="../en/index.html">english</a>
-</body>
-</html>') 
+template = File.read("./template.html")
 
+require 'yaml'
+bg_index = YAML.load_file("bg_index.yml") # From file
+en_index = YAML.load_file("en_index.yml") # From file
 
-bg_text = {
-	:headline => "Въпроси и отговори",
-	:question => "Как е?",
-	:body => "Само отговори.",
-}
+File.write("./bg/index.html", template%bg_index) 
 
-en _text = {
-	:headline => "Q&A",
-	:question => "What's up?",
-	:body => "Just answers.",
-}
+File.write("./en/index.html", template%en_index) 
