@@ -1,4 +1,4 @@
-template = File.read("./template.html")
+template = File.read("./template/template.html")
 
 require 'yaml'
 bg_index = YAML.load_file("bg_index.yml") # From file
